@@ -15,6 +15,7 @@ edges = [
 
 G = nx.Graph()
 
+
 G.add_nodes_from(nodes)
 G.add_node(10)
 G.add_edges_from(edges)
@@ -22,6 +23,8 @@ G.add_edge(3, 10)
 
 print(f'Nodes: {G.nodes}')
 print(f'Edges: {G.edges}')
+
+G.remove_node(1)
 
 print('----ADJ LIST----')
 for node in G.nodes:
