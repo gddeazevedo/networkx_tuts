@@ -1,4 +1,5 @@
 import networkx as nx
+from typing import Any
 
 
 BLACK = 'B'
@@ -12,7 +13,7 @@ d = {}
 time = 0
 
 
-def dfs_visit(G: nx.Graph | nx.DiGraph, u: int):
+def dfs_visit(G: nx.Graph | nx.DiGraph, u: Any):
     global time
     time += 1
     d[u] = time
