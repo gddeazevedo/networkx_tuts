@@ -35,3 +35,13 @@ def bfs(G: nx.Graph | nx.DiGraph, s: Any):
                 q.append(v)
 
         colors[u] = BLACK
+
+
+def print_path(g: nx.Graph | nx.DiGraph, s: Any, u: Any):
+    if s == v:
+        print(s)
+    elif parents[v] == None:
+        print(f'No path from {s} to {u}')
+    else:
+        print_path(g, s, parents[u])
+        print(u)
