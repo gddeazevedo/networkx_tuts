@@ -26,7 +26,7 @@ def bfs(G: nx.Graph | nx.DiGraph, s: Any):
 
     while q:
         u = q.pop()
-        
+   
         for v in G.adj[u]:
             if colors[v] == WHITE:
                 colors[v] = GREY
