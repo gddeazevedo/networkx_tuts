@@ -14,3 +14,5 @@ for node, neighbors in FG.adj.items():
 #        wt = eattr['weight']
 #        if wt < 0.5: print(f"({n}, {nbr}, {wt:.3})")
 
+nx.draw(FG, with_labels=True, font_weight='bold')
+plt.show()
