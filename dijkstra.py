@@ -66,7 +66,6 @@ def dijkstra(g: nx.DiGraph, s: int):
     q.extend(g.nodes)
 
     while q:
-        print(q)
         u = extract_min(q)
         for v in g.adj[u]:
             relax(u, v, w)
@@ -76,5 +75,17 @@ dijkstra(g, 1)
 print(f'd: {d}')
 print(f'pi: {pi}')
 
-# nx.draw(g, with_labels=True, font_weight='bold')
-# plt.show()
+
+shortest_path = nx.DiGraph()
+
+shortest_path.add_nodes_from(pi.keys())
+
+for key, value in pi.items():
+    if value != None:
+        shortest_path.add_edge(value, key)
+
+
+nx.draw(g, with_labels=True, font_weight='bold')
+plt.show()
+nx.draw(shortest_path, with_labels=True, font_weight='bold')
+plt.show()
