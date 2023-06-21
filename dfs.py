@@ -1,19 +1,32 @@
 import networkx as nx
-from typing import Any
 
 
 BLACK = 'B'
-GREY  = 'G'
 WHITE = 'W'
+GREY  = 'G'
 
-colors = {}
-parents = {}
-f = {}
+
 d = {}
+f = {}
+pi = {}
+colors = {}
 time = 0
 
+nodes = [1, 2, 3, 4, 5, 6]
+edges = [
+    (1, 2),
+    (1, 3),
+    (2, 4),
+    (5, 6),
+    (3, 4),
+]
+G = nx.Graph()
 
-def dfs_visit(G: nx.Graph | nx.DiGraph, u: Any):
+G.add_nodes_from(nodes)
+G.add_edges_from(edges)
+
+
+def dfs_visit(G: nx.Graph, u: int):
     global time
     time += 1
     d[u] = time
@@ -21,19 +34,26 @@ def dfs_visit(G: nx.Graph | nx.DiGraph, u: Any):
 
     for v in G.adj[u]:
         if colors[v] == WHITE:
-            parents[v] = u
+            pi[v] = u
             dfs_visit(G, v)
 
+    colors[u] = BLACK
     time += 1
     f[u] = time
-    colors[u] = BLACK
 
 
-def dfs(G: nx.Graph | nx.DiGraph):
+def dfs(G: nx.Graph):
     for u in G.nodes:
+        pi[u] = None
         colors[u] = WHITE
-        parents[u] = None
 
     for u in G.nodes:
         if colors[u] == WHITE:
             dfs_visit(G, u)
+
+
+dfs(G)
+
+print(pi)
+print(d)
+print(f)
