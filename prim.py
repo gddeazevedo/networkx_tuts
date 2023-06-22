@@ -31,15 +31,6 @@ for u, v in G.edges:
 
 
 w = lambda u, v: weights[(u, v)]
-    
-
-def initialize_single_source(g: nx.DiGraph, s: int):
-    for u in g.nodes:
-        d[u] = math.inf
-        pi[u] = None
-
-    d[s] = 0
-
 
 def extract_min(q: list[int]):
     min_node = q[0]
